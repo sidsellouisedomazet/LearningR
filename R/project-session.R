@@ -3,6 +3,8 @@
 source(here::here("R/package-loading.R"))
 
 
+?colnames
+
 # R project management  ---------------------------------------------------
 
 weight_kilos <- 100
