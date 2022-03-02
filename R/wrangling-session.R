@@ -52,3 +52,6 @@ nhanes_small %>%
 nhanes_small %>%
     select(phys_active) %>%
     rename(physically_active=phys_active)
+
+# Add diastolic blood pressure to the data frame (for the exercise 6.9)
+nhanes_small <- select(NHANES, Age, Gender, BMI, Diabetes, PhysActive, BPSysAve, BPDiaAve, Education)
