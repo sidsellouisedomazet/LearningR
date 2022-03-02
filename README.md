@@ -8,6 +8,8 @@ This project is about learning R and Git.
 
 Random sentence. 
 
+Another random sentence. 
+
 # Brief description of folder and file contents
 
 TODO: As project evolves, add brief description of what is inside the data, doc and R folders.
