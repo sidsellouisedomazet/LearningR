@@ -24,7 +24,7 @@ select(NHANES, ends_with("Day"))
 select(NHANES, contains("Age"))
 
 # Save the selected columns as a new data frame
-nhanes_small <- select(NHANES, Age, Gender, BMI, Diabetes, PhysActive, BPSysAve, Education)
+nhanes_small <- select(NHANES, Age, Gender, BMI, Diabetes, PhysActive, BPSysAve, BPDiaAve, Education)
 
 # View the new data frame
 nhanes_small
@@ -54,4 +54,70 @@ nhanes_small %>%
     rename(physically_active=phys_active)
 
 # Add diastolic blood pressure to the data frame (for the exercise 6.9)
-nhanes_small <- select(NHANES, Age, Gender, BMI, Diabetes, PhysActive, BPSysAve, BPDiaAve, Education)
+# nhanes_small <- select(NHANES, Age, Gender, BMI, Diabetes, PhysActive, BPSysAve, BPDiaAve, Education)
+
+# Filter
+nhanes_small %>%
+    filter(phys_active=="No")
+
+# Participants who are physical active
+
+nhanes_small %>%
+    filter(phys_active !="No")
+
+# Participants who have a BMI equal to 25
+nhanes_small %>%
+    filter(bmi==25)
+
+# Participants who have a BMI equal to or more than 25
+nhanes_small %>%
+    filter(bmi>=25)
+
+TRUE & TRUE
+TRUE & FALSE
+FALSE & FALSE
+
+TRUE | TRUE
+TRUE | FALSE
+FALSE | FALSE
+
+# Find participants with BMI equal to 25 AND physical activity is "No"
+nhanes_small %>%
+    filter(bmi==25 & phys_active=="No")
+
+# When BMI equal to 25 OR the phys_active is "No"
+nhanes_small %>%
+    filter(bmi==25 | phys_active=="No")
+
+# Arrange data by age in ascending order
+nhanes_small %>%
+    arrange(age)
+
+nhanes_small %>%
+    arrange(education)
+
+nhanes_small %>%
+    arrange(desc(age))
+
+levels(nhanes_small$education)
+
+# Arranging data by education then age in ascending order
+nhanes_small %>%
+    arrange(education, age)
+
+# Modify the age variable
+age=age*12
+
+nhanes_small %>%
+    mutate(age=age*12)
+
+nhanes_small %>%
+    mutate(logged_bmi = log(bmi))
+
+nhanes_small %>%
+    mutate(age = age * 12,
+           logged_bmi = log(bmi))
+
+# View function (to see the data frame after the restriction)
+nhanes_small %>%
+    mutate(old = if_else(age>=30, "Yes", "No")) %>% View
