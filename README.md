@@ -4,7 +4,9 @@ TODO: Add more to the title of your project here
 
 TODO: Give a brief description of what your project is about
 
-This project is about learning R and Git.
+This project is about learning R and Git. 
+
+Random sentence. 
 
 # Brief description of folder and file contents
 
