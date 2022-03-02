@@ -54,23 +54,12 @@ nhanes_small %>%
 
 # Pipe the data into mutate function and:
 nhanes_modified <- nhanes_small %>% # Specifying dataset
-    mutate(
-        # 2. Calculate mean arterial pressure
-        ___ = ___,
-        # 3. Create young_child variable using a condition
-        ___ = if_else(___, "Yes", "No")
+
+    # 2. Calculate mean arterial pressure
+    # 3. Create young_child variable using a condition
+    mutate(mean_arterial_pressure = ((2*bp_dia_ave)+bp_sys_ave/3),
+        young_child = if_else(age<6, "Yes", "No"))
     )
-
-nhanes_modified
-# ----------------------GO BACK FINISH-------------------
-
-# 2. Calculate mean arterial pressure
-
-        mutate(mean_arterial_pressure = ((2*bp_dia_ave)+bp_sys_ave/3)
-
-# 3. Create young_child variable using a condition
-        mutate(young_child = if_else(age<6, "Yes", "No")
-
 
 nhanes_modified
 
