@@ -1,0 +1,39 @@
+---
+title: "LearningR"
+author: "Sidsel Louise Domazet"
+date: "2/3/2022"
+output:
+  word_document: default
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+## R Markdown
+
+```{r setup}
+source(here::here("R/package-loading.R"))
+load(here::here("data/nhanes_small.rda"))
+```
+```{r}
+nhanes_small
+```
+
+```{r setup}
+source(here::here("R/package-loading.R"))
+load(here::here("data/nhanes_small.rda"))
+```
+```{r prettier-table, echo=FALSE}
+nhanes_small %>% 
+    filter(!is.na(diabetes), !is.na(education)) %>% 
+    group_by(diabetes, education) %>% 
+    summarise(mean_age = mean(age, na.rm = TRUE),
+              mean_bmi = mean(bmi, na.rm = TRUE)) %>%
+    ungroup() %>% 
+    mutate(mean_age = round(mean_age, 1),
+           mean_bmi = round(mean_bmi, 1),
+           education = str_to_sentence(education)) %>% 
+    rename("Diabetes Status" = diabetes, Education = education, "Mean Age" = mean_age, "Mean BMI" = mean_bmi) %>% 
+    knitr::kable(caption = "Tabel caption. Mean values of Age nd BMI for each education and diabetes status.")
+```
