@@ -1,14 +1,32 @@
 ---
-title: "LearningR"
+title: "Reproducible documents"
 author: "Sidsel Louise Domazet"
 date: "2/3/2022"
-output:
-  word_document: default
----
+output: word_document
+theme: darkly
+--- 
 
-```{r setup, include=FALSE}
-knitr::opts_chunk$set(echo = TRUE)
+- Sidsel Louise Domazet
+- Steno Diabetes Center Odense, Region South, Denmark
+- Department of Clinical Epidemiology, Aarhus, Denmark
+
+# Intro
+
+**This** is the *intro*
+
+# Methods and Results 
+
+**This** is the *methods and results*
+
+## Analysis 
+
+**This** is the *analyses*
+
+2 + 2 = 
+```{r}
+2+2
 ```
+
 
 ## R Markdown
 
@@ -20,10 +38,8 @@ load(here::here("data/nhanes_small.rda"))
 nhanes_small
 ```
 
-```{r setup}
-source(here::here("R/package-loading.R"))
-load(here::here("data/nhanes_small.rda"))
-```
+
+
 ```{r prettier-table, echo=FALSE}
 nhanes_small %>% 
     filter(!is.na(diabetes), !is.na(education)) %>% 
@@ -36,4 +52,11 @@ nhanes_small %>%
            education = str_to_sentence(education)) %>% 
     rename("Diabetes Status" = diabetes, Education = education, "Mean Age" = mean_age, "Mean BMI" = mean_bmi) %>% 
     knitr::kable(caption = "Tabel caption. Mean values of Age nd BMI for each education and diabetes status.")
+```
+
+
+![Image by Dimitri Houtteman from Pixabay.](doc/images/kitten.jpg)
+
+```{r kiten-image, fig.cap="Image by Dimitri Houtteman from Pixabay.", fig.align='center', out.height="75%", out.width="75%"}
+knitr::include_graphics(here::here("doc/images/kitten.jpg"))
 ```
